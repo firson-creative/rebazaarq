@@ -1,0 +1,23 @@
+<?php
+ini_set('display_errors', 1);
+error_reporting(E_ALL);
+
+require_once __DIR__ . '/includes/db.php';
+
+// Generate hash baru yang valid dari mesin PHP Anda
+$password_baru = 'Admin123!';
+$hash_baru = password_hash($password_baru, PASSWORD_BCRYPT);
+
+// Update hash admin dan bersihkan login_attempts
+$stmt = $pdo->prepare("UPDATE users SET password_hash = ? WHERE username = 'admin'");
+$stmt->execute([$hash_baru]);
+
+$pdo->exec("TRUNCATE TABLE login_attempts");
+
+echo "<p style='color:green; font-weight:bold;'>✅ Hash password admin berhasil diperbarui dan kunci login dibuka!</p>";
+echo "<p>Silakan coba Sign In kembali dengan:</p>";
+echo "<ul>";
+echo "<li>Username: <code>admin</code></li>";
+echo "<li>Password: <code>Admin123!</code></li>";
+echo "</ul>";
+echo "<a href='auth/login.php'>Kembali ke Halaman Login</a>";

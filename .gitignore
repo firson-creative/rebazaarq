@@ -1,0 +1,17 @@
+# Folder dependensi Composer
+/vendor/
+composer.phar
+
+# File kredensial sensitif
+/includes/db.php
+/includes/config.php
+.env
+
+# Folder ekspor data / laporan temporer
+/export/*
+!/export/.gitkeep
+
+# File IDE / Editor lokal
+.vscode/
+.idea/
+*.log
