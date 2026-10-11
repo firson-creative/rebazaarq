@@ -15,3 +15,10 @@ composer.phar
 .vscode/
 .idea/
 *.log
+
+admin.php
+test_auth
+test_auth.*
+includes/db.php
+includes/config.php
+vendor/
